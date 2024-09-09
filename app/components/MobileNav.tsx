@@ -1,34 +1,30 @@
-import React from "react"
-import Image from "next/image"
-
+import { Button } from "../../@/components/ui/button"
+import { Input } from "../../@/components/ui/input"
+import { Label } from "../../@/components/ui/label"
 import {
-    Sheet,
-    SheetContent,
-    SheetDescription,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-  } from "../../@/components/ui/sheet"
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "../../@/components/ui/sheet"
+import Image from "next/image"
+import Link from "next/link"
 
-const MobileNav = ({user}:MobileNavProps) => {
+export function MobileNav({user}:MobileNavProps) {
   return (
-    <section  className="w-full max-w-[264px] ">
+    <section>
       <Sheet>
-  <SheetTrigger>
-    <Image src="/icons/hamburger.svg" width={30} height={30} alt="menu" className="cursor-pointer" />
-  </SheetTrigger>
-  <SheetContent>
-    <SheetHeader>
-      <SheetTitle>Are you absolutely sure?</SheetTitle>
-      <SheetDescription>
-        This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
-      </SheetDescription>
-    </SheetHeader>
-  </SheetContent>
-</Sheet>
-    </section>
+        <SheetTrigger >
+          <Image src="/icons/hamburger.svg" alt="menu" height={30} width={30} className="cursor-pointer z-20" />
+        </SheetTrigger>
+        <SheetContent side="left"  className="md:w-11 sm:w-[540px]">
+        <p>Sheet Content</p>
+        </SheetContent>
+      </Sheet>
+      </section>
   )
 }
-
-export default MobileNav
