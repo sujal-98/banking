@@ -22,7 +22,7 @@ const loggedIn={firstName:'Sujal', lastName:"Gupta", email:"sujalgupta1412@gmail
         Recent Transactions
       </div>
 
-      <RightSidebar user={loggedIn} transactions={[]} banks={[{},{}]} />
+      <RightSidebar user={loggedIn} transactions={[]} banks={[{name:"HDFC BANK"},{}]} />
     </section>
   )
 }
