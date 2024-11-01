@@ -16,13 +16,12 @@ import {
   FormMessage,
 } from '../../@/components/ui/form';
 import { Input } from '../../@/components/ui/input';
+import CustomInput from './customInput'
 
 const formSchema = z.object({
-  username: z
-    .string()
-    .min(2, { message: 'Username must be at least 2 characters.' })
-    .max(50, { message: 'Username must not exceed 50 characters.' }),
-});
+  email: z
+    .string().email()
+  });
 
 const AuthForm = ({ type }: { type: String }) => {
   const [user, setUser] = useState(null);
@@ -31,7 +30,7 @@ const AuthForm = ({ type }: { type: String }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: '',
+      email: '',
     },
   });
 
@@ -75,19 +74,12 @@ const AuthForm = ({ type }: { type: String }) => {
         <>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <FormField
-                control={form.control}
-                name="username"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Username</FormLabel>
-                    <FormControl>
-                      <Input placeholder="shadcn" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              
+             <CustomInput control={form.control} name='username' label='UserName' placeholder='Enter you username' type='text' />
+             <CustomInput control={form.control} name='password' label='Password' placeholder='Enter you Password' type='password' />
+             
+      
+      
               <Button type="submit" disabled={loading}>
                 {loading ? 'Submitting...' : 'Submit'}
               </Button>
